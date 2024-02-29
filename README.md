@@ -1,7 +1,7 @@
 # DSA
 
-Majority Element
-java```
+## Majority Element (>n/2 times) - Moores's voting algorithm 
+```
  public static int majorityElement(int[] arr) {
         int count = 0;
         int num = 0;
