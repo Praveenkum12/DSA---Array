@@ -18,12 +18,10 @@ java```
                 count--;
             }
         }
-
         count = 0;
         for(int i=0; i<n; i++){
         if(arr[i] == num)  count++;
         }
-        
         if(count > n/2){
             return num;
         }
