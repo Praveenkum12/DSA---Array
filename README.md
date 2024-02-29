@@ -140,3 +140,35 @@ public static long maxSubarraySum(int[] arr, int n) {
         return max;
 }
 ```
+
+### 5) Best time to buy and sell stock
+```
+public static int bestTimeToBuyAndSellStock(int []prices) {
+        int minPrice = Integer.MAX_VALUE;
+        int max = 0;
+        int n = prices.length;
+        for(int i = 0; i<n; i++){
+            if(prices[i] < minPrice){
+                minPrice = prices[i];
+            }
+            max = Math.max(max, prices[i]-minPrice);
+        }
+        return max;
+    }
+```
+
+### 5) Alternate Numbers
+```
+public static int bestTimeToBuyAndSellStock(int []prices) {
+        int minPrice = Integer.MAX_VALUE;
+        int max = 0;
+        int n = prices.length;
+        for(int i = 0; i<n; i++){
+            if(prices[i] < minPrice){
+                minPrice = prices[i];
+            }
+            max = Math.max(max, prices[i]-minPrice);
+        }
+        return max;
+    }
+```
