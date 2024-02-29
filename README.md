@@ -49,7 +49,7 @@
     }
 ```
 
-### 2 Sum Problem
+### 1) 2 Sum Problem
 ```
  public static String twoSum(int n, int []arr, int target) {
         Arrays.sort(arr);
@@ -65,7 +65,7 @@
     }
 ```
 
-###  Sort An Array of 0s, 1s and 2s
+###  2) Sort An Array of 0s, 1s and 2s
 ```
  public static void sortArray(ArrayList<Integer> arr, int n) {
         int low = 0, mid = 0, high = n-1;
@@ -92,7 +92,7 @@
     }
 ```
 
-### Majority Element (>n/2 times) - Moores's voting algorithm 
+### 3) Majority Element (>n/2 times) - Moores's voting algorithm 
 ```
  public static int majorityElement(int[] arr) {
         int count = 0;
@@ -119,4 +119,24 @@
         }
         return -1;
     }
+```
+
+### 4) Maximum Subarray Sum - (Kadane's Algorithm)
+```
+public static long maxSubarraySum(int[] arr, int n) {
+		long max = 0;
+        long sum = 0;
+        if(n == 0) return max;
+
+        for(int i=0; i<n; i++){
+            sum += arr[i];
+            if(sum > max){
+                max = Math.max(sum, max);
+            }
+            if(sum<0){
+                sum = 0;
+            }
+        }
+        return max;
+	}
 ```
