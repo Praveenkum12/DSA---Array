@@ -124,7 +124,7 @@
 ### 4) Maximum Subarray Sum - (Kadane's Algorithm)
 ```
 public static long maxSubarraySum(int[] arr, int n) {
-		long max = 0;
+	long max = 0;
         long sum = 0;
         if(n == 0) return max;
 
