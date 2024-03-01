@@ -157,18 +157,22 @@ public static int bestTimeToBuyAndSellStock(int []prices) {
     }
 ```
 
-### 5) Alternate Numbers
+### 5) Rearrage Numbers
 ```
-public static int bestTimeToBuyAndSellStock(int []prices) {
-        int minPrice = Integer.MAX_VALUE;
-        int max = 0;
-        int n = prices.length;
+public int[] rearrangeArray(int[] arr) {
+        int[] newArr = new int[arr.length];
+        int pos = 0;
+        int neg = 1;
+        int n = arr.length;
         for(int i = 0; i<n; i++){
-            if(prices[i] < minPrice){
-                minPrice = prices[i];
+            if(arr[i] > 0){
+                newArr[pos] = arr[i];
+                pos += 2;
+            } else {
+                newArr[neg] = arr[i];
+                neg += 2;
             }
-            max = Math.max(max, prices[i]-minPrice);
         }
-        return max;
-    }
+	return newArr;
+}
 ```
