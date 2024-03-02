@@ -177,7 +177,7 @@ public int[] rearrangeArray(int[] arr) {
 }
 ```
 
-### 5) Next Permutation
+### 6) Next Permutation
 ```
 public void nextPermutation(int[] arr) {
         int index = -1;
