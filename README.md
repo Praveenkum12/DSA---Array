@@ -319,7 +319,7 @@ public void setZeroes(int[][] matrix) {
         }
     }
 ```
-### 8) Rotate 90deg
+### 9) Rotate 90deg
 ###### Brute-force approach - using extra space here
 ```
 public void rotate(int[][] matrix) {
