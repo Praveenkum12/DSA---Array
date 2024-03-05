@@ -319,3 +319,40 @@ public void setZeroes(int[][] matrix) {
         }
     }
 ```
+### 8) Rotate 90deg
+###### Brute-force approach - using extra space here
+```
+public void rotate(int[][] matrix) {
+        int n = matrix.length;
+        int[][] arr = new int[n][n];
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+                arr[j][n-i-1] = matrix[i][j];
+            }
+        }
+
+        for(int i =0; i<n; i++){
+            for(int j = 0; j<n; j++){
+                matrix[i][j] = arr[i][j]; 
+            }
+        }
+    }
+```
+###### Optimised approach - avoided
+```
+public void rotate(int[][] matrix) {
+        int n = matrix.length;
+        int[][] arr = new int[n][n];
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+                arr[j][n-i-1] = matrix[i][j];
+            }
+        }
+
+        for(int i =0; i<n; i++){
+            for(int j = 0; j<n; j++){
+                matrix[i][j] = arr[i][j]; 
+            }
+        }
+    }
+```
