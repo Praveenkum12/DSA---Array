@@ -384,12 +384,16 @@ class Solution {
                 list.add(arr[i][right]);
             }
             right--;
-            for(int i=right; i>=left; i--){
+            if(top<=bottom){
+                for(int i=right; i>=left; i--){
                 list.add(arr[bottom][i]);
+                }
             }
             bottom--;
-            for(int i=bottom; i>=top; i--){
+            if(left<=right){
+                for(int i=bottom; i>=top; i--){
                 list.add(arr[i][left]);
+                }
             }
             left++;
         }
