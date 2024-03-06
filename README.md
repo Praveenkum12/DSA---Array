@@ -366,3 +366,81 @@ public void rotate(int[][] matrix) {
         }
     }
 ```
+### 10) Spiral Matrix
+```
+class Solution {
+    public List<Integer> spiralOrder(int[][] arr) {
+        List<Integer> list = new ArrayList<>();
+        int n = arr.length;
+        int m = arr[0].length;
+        int top = 0, left = 0;
+        int bottom = n-1, right = m-1;
+        while(top<=bottom && left<=right){
+            for(int i = left; i<=right; i++){
+                list.add(arr[top][i]);
+            }
+            top++;
+            for(int i = top; i<=bottom; i++){
+                list.add(arr[i][right]);
+            }
+            right--;
+            for(int i=right; i>=left; i--){
+                list.add(arr[bottom][i]);
+            }
+            bottom--;
+            for(int i=bottom; i>=top; i--){
+                list.add(arr[i][left]);
+            }
+            left++;
+        }
+        return list;
+    }
+}
+```
+### 11) Count subarrays with given sum
+```
+class Solution {
+    public int subarraySum(int[] arr, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int preSum = 0;
+        int count = 0;
+        map.put(0, 1);
+        for(int el: arr){
+            preSum += el;
+            int diff = preSum - k;
+            if(map.containsKey(diff)){
+                count+=map.get(diff);
+            }
+            map.put(preSum, map.getOrDefault(preSum, 0)+1);
+        }
+        return count;
+    }
+}
+```
+
+# Array - HARD
+### 1) Pascal Triangle
+```
+class Solution {
+    public List<List<Integer>> generate(int n) {
+        List<List<Integer>> list = new ArrayList<>();
+        for(int i=1; i<=n; i++){
+            list.add(nThRow(i));
+        }
+        return list;
+    }
+
+    private static List<Integer> nThRow(int n) {
+        int ans = 1;
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        for(int i=1; i<n; i++){
+            ans = ans * (n-i);
+            ans = ans / i;
+            list.add(ans);
+        }
+
+        return list;
+    }
+}
+```
