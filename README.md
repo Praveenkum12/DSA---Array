@@ -36,7 +36,7 @@
             if(sum == k){
                 maxLen = Math.max(maxLen, i+1);
             }
-            int diff = sum - k;1
+            int diff = sum - k;
             if(map.containsKey(diff)){
                 int temp = i - map.get(diff);
                 maxLen = Math.max(maxLen, temp);
