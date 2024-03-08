@@ -582,3 +582,24 @@ public static  List<List<Integer>> fourSum(int[] arr, int target) {
         return ans;
     }
 ```
+### 5) Count the number of subarrays with given xor K
+```
+public class Solution {
+    public static int subarraysWithSumK(int []arr, int target) {
+        int preSum = 0;
+        int count = 0;
+        int n = arr.length;
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0,1);
+        for(int i=0; i<n; i++){
+            preSum ^= arr[i];
+            int diff = preSum ^ target;
+            if(map.containsKey(diff)){
+                count += map.get(diff);
+            }
+            map.put(preSum, map.getOrDefault(preSum, 0)+1);
+        }
+        return count;
+    }
+}
+```
