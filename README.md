@@ -603,3 +603,39 @@ public class Solution {
     }
 }
 ```
+### 6) Merge Intervals
+```
+class Solution {
+    public int[][] merge(int[][] arr) {
+        Arrays.sort(arr, new Comparator<int[]>() {
+            public int compare(int[] a, int[] b) {
+                return a[0] - b[0];
+            }
+        });
+        int n = arr.length;
+        List<int[]> list = new ArrayList<>();
+        for(int i=0; i<n; i++){
+            int[] tempInt = arr[i];
+            int start = tempInt[0];
+            int end = tempInt[1];
+            int j = i+1;
+            while(j<n && arr[j][0]<=end){
+                if(arr[j][1] > end) end = arr[j][1];
+                if(arr[j][0] < start) start = arr[j][0];
+                j++;
+            }
+            tempInt[0] = start;
+            tempInt[1] = end;
+            list.add(tempInt);
+            i = j-1;
+        }
+        int[][] ans = new int[list.size()][];
+        int i = 0;
+        for(int[] el: list){
+            ans[i] = el;
+            i++;
+        }
+        return ans;
+    }
+}
+```
