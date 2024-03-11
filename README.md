@@ -658,3 +658,24 @@ public static void mergeTwoSortedArraysWithoutExtraSpace(long []arr1, long []arr
 	Arrays.sort(arr2);
 }
 ```
+### 8) Finding repeated and missing number
+```
+public static int[] findMissingRepeatingNumbers(int []arr) {
+        long sum = 0, sumSqr = 0;
+        long n = arr.length;
+        for(int val: arr){
+            sum += (long)val;
+            sumSqr += (long)val * (long)val;
+        }
+        long specSum = n * (n+1) / 2;
+        long specSumSqr = n * (n+1) * (2 * n + 1) / 6;
+        long eq1 = sum - specSum;
+        long eq2 = (sumSqr - specSumSqr) / eq1;
+        long x = (eq1 + eq2) / 2;
+        long y = eq2  - x;
+        int[] b = new int[2];
+        b[0] = (int)x;
+        b[1] = (int)y;
+        return b;
+}
+```
