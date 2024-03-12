@@ -681,24 +681,23 @@ public static int[] findMissingRepeatingNumbers(int []arr) {
 ```
 ### 9) Number of inversions
 ```
-import java.util.*;
 public class Solution {
-    static int count = 0;
     public static int numberOfInversions(int []arr, int n) {
         return mergeSort(arr, 0, n-1);
     }
 
     public static int mergeSort(int arr[], int low, int high){
+        int count = 0;
         if(low == high){
-            return 0;
+            return count;
         }
         int mid = (low + high) / 2;
-        mergeSort(arr, low, mid);
-        mergeSort(arr, mid+1, high);
-        return merg(arr, low, mid, high);
+        count += mergeSort(arr, low, mid);
+        count += mergeSort(arr, mid+1, high);
+        return merg(arr, low, mid, high, count);
     }
 
-    private static int merg(int[] arr, int low, int mid, int high) {
+    private static int merg(int[] arr, int low, int mid, int high, int count) {
         int i = low;
         int j = mid+1;
         List<Integer> list = new ArrayList<>();
