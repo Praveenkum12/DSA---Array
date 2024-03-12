@@ -732,3 +732,65 @@ public class Solution {
     }
 }
 ```
+### 10) Reverse Pair - (Time: O(2n.logn))
+```
+public class Solution {
+    public static int team(int []arr, int n){
+        return mergeSort(arr, 0, n-1);
+    }
+
+     public static int mergeSort(int[] arr, int low, int high){
+        int count =0;
+        if(low == high){
+            return 0;
+        }
+        int mid = (low + high) / 2;
+        count += mergeSort(arr, low, mid);
+        count += mergeSort(arr, mid+1, high);
+        count += countPairs(arr, low, mid, high);
+        merge(arr, low, mid, high);
+        return count;
+    }
+
+    private static int countPairs(int[] arr, int low, int mid, int high){
+        int right = mid+1;
+        int count = 0;
+        for(int i=low; i<=mid; i++){
+            while(right <= high && arr[i] > 2*arr[right]){
+                right++;
+            }
+            count += right - (mid+1);
+        }
+        return count;
+    }
+
+    public static void merge(int[] arr, int low, int mid, int high){
+        int i = low;
+        int j = mid+1;
+        List<Integer> list = new ArrayList<>();
+        while(i<=mid && j<=high){
+            if(arr[i] <= arr[j]){
+                list.add(arr[i]);
+                i++;
+            } else {
+                list.add(arr[j]);
+                j++;
+            }
+        }
+
+        while(i<=mid){
+            list.add(arr[i]);
+            i++;
+        }
+
+        while(j<=high){
+            list.add(arr[j]);
+            j++;
+        }
+
+        for(int x=low; x<=high; x++){
+            arr[x] = list.get(x - low);
+        }
+    }
+}
+```
