@@ -679,3 +679,57 @@ public static int[] findMissingRepeatingNumbers(int []arr) {
         return b;
 }
 ```
+### 9) Number of inversions
+```
+import java.util.*;
+public class Solution {
+    static int count = 0;
+    public static int numberOfInversions(int []arr, int n) {
+        return mergeSort(arr, 0, n-1);
+    }
+
+    public static int mergeSort(int arr[], int low, int high){
+        if(low == high){
+            return 0;
+        }
+        int mid = (low + high) / 2;
+        mergeSort(arr, low, mid);
+        mergeSort(arr, mid+1, high);
+        return merg(arr, low, mid, high);
+    }
+
+    private static int merg(int[] arr, int low, int mid, int high) {
+        int i = low;
+        int j = mid+1;
+        List<Integer> list = new ArrayList<>();
+
+        while(i<=mid && j<=high){
+            if(arr[i] <= arr[j]){
+                list.add(arr[i]);
+                i++;
+            }
+            else {
+                list.add(arr[j]);
+                count += mid - i + 1;
+                j++;
+            }
+        }
+
+        while(i<=mid){
+            list.add(arr[i]);
+            i++;
+        }
+
+        while(j<=high){
+            list.add(arr[j]);
+            j++;
+        }
+
+        for (int x = low; x <= high; x++) {
+            arr[x] = list.get(x - low);
+        }
+
+        return count;
+    }
+}
+```
