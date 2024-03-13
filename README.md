@@ -794,3 +794,29 @@ public class Solution {
     }
 }
 ```
+### 11) Maximum Product Subarray
+```
+class Solution {
+    public int maxProduct(int[] arr) {
+        int max = Integer.MIN_VALUE;
+        int prefix = 1, suffix = 1;
+        int n = arr.length;
+        for(int i=0; i<n; i++){
+            prefix = prefix * arr[i];
+            suffix = suffix * arr[n-i-1];
+
+            max = Math.max(max, prefix);
+            max = Math.max(max, suffix);
+
+            if(prefix == 0){
+                prefix = 1;
+            }
+            if(suffix == 0){
+                suffix = 1;
+            }
+        }
+        return max;
+    }
+}
+```
+
